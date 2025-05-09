@@ -39,6 +39,18 @@ const Register = () => {
                 setSuccess("Account created successfully!");
                 form.reset();
                 console.log(result.user);
+
+                const userInfo={
+                  email: email
+                }
+
+                axiosPublic.post('/users',userInfo)
+                .then(res=>{
+                    if(res.data.insertedID){
+                        console.log("user added to db")
+                    }
+                })
+
             })
             .catch(error => {
                 setError(error.message);
@@ -51,7 +63,7 @@ const Register = () => {
         <div className="hero bg-base-200 min-h-screen">
 <div className="hero-content flex flex-col-reverse md:flex-row justify-center items-center gap-10">
 
-                {/* Register Form */}
+               
                 <div className="card bg-base-100 w-full max-w-sm shadow-2xl">
                     <h1 className="pr-5 ml-8 mt-4 text-4xl md:text-5xl font-bold">Register now!</h1>
                     <form onSubmit={handleRegister} className="card-body">
@@ -74,7 +86,7 @@ const Register = () => {
                     </div>
                 </div>
 
-                {/* Lottie Animation */}
+                
                 <div className="flex justify-center">
                     <lottie-player
                         autoplay

@@ -7,6 +7,7 @@ import Home from "../pages/Home/Home";
 import Register from "../pages/register/Register";
 import SignIn from "../pages/signin/SignIn";
 import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../pages/Home/Dashboard";
 
 const router = createBrowserRouter([
     {
@@ -18,8 +19,10 @@ const router = createBrowserRouter([
                 path: '/',
                 element: <Home></Home>
             },
-            
-            
+            {
+                path: '/dashboard',
+                element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+            },
             
             {
                 path: '/register',

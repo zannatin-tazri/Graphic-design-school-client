@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext/AuthContext';
 
 const WorkGallery = () => {
+    
+    const isAdmin=true;
+
     const [workgallery, setWorkGallery] = useState([]);
     const [showAll, setShowAll] = useState(false);
     const { user } = useContext(AuthContext);
@@ -30,6 +33,16 @@ const WorkGallery = () => {
             <h1 className='pt-12 my-10 font-serif text-center text-5xl font-bold text-gray-600'>
                 Work Gallery
             </h1>
+
+            {
+                isAdmin ? <>
+                 
+                </>
+                :
+                <>
+                
+                </>
+            }
 
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 px-4'>
                 {
