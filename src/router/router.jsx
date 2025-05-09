@@ -8,6 +8,7 @@ import Register from "../pages/register/Register";
 import SignIn from "../pages/signin/SignIn";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../pages/Home/Dashboard";
+import WorkGalleryAdmin from "../pages/Home/WorkGalleryAdmin";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+            },
+            {
+                path: '//manageadmin',
+                element: <PrivateRoute><WorkGalleryAdmin></WorkGalleryAdmin></PrivateRoute>
             },
             
             {

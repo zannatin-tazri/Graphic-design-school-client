@@ -1,16 +1,22 @@
 import React, { useEffect, useState, useContext } from 'react';
 import WorkGalleryCard from './WorkGalleryCard';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext/AuthContext';
 
 const WorkGallery = () => {
-    
-    const isAdmin=true;
-
+    const { user } = useContext(AuthContext);
+    const [isAdmin, setIsAdmin] = useState(false);
     const [workgallery, setWorkGallery] = useState([]);
     const [showAll, setShowAll] = useState(false);
-    const { user } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user?.email) {
+            fetch(`http://localhost:5000/users/admin/${user.email}`)
+                .then(res => res.json())
+                .then(data => setIsAdmin(data.isAdmin));
+        }
+    }, [user]);
 
     useEffect(() => {
         fetch('http://localhost:5000/gallery')
@@ -22,8 +28,12 @@ const WorkGallery = () => {
         if (user) {
             setShowAll(!showAll);
         } else {
-            navigate('/signin'); 
+            navigate('/signin');
         }
+    };
+
+    const handleManageGallery = () => {
+        navigate('/workgallery-admin'); // Make sure this route exists in your router
     };
 
     const visibleGallery = showAll && user ? workgallery : workgallery.slice(0, 6);
@@ -34,15 +44,13 @@ const WorkGallery = () => {
                 Work Gallery
             </h1>
 
-            {
-                isAdmin ? <>
-                 
-                </>
-                :
-                <>
-                
-                </>
-            }
+            {isAdmin && (
+                <div className="text-center mb-6">
+                   <Link to='/manageadmin'><button onClick={handleManageGallery} className="btn btn-outline btn-warning">
+                        Manage Gallery
+                    </button></Link> 
+                </div>
+            )}
 
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 px-4'>
                 {
