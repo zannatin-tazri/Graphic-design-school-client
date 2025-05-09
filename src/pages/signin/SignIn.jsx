@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext/AuthContext';
 import SocialLogin from '../shared/SocialLogin';
 
@@ -44,7 +44,7 @@ const SignIn = () => {
                     <div>
                         <div className="divider">OR</div>
                         <div className="card bg-base-100 rounded-box grid h-20 place-items-center">
-                            <SocialLogin />
+                            <p>Do not have any account ? <Link className='text-green-700' to='/register'> Register</Link></p>
                         </div>
                     </div>
                 </div>

@@ -1,9 +1,13 @@
 import { LottiePlayer } from '@lottiefiles/lottie-player';
 import React, { useContext, useState } from 'react';
 import AuthContext from '../../context/AuthContext/AuthContext';
-import SocialLogin from '../shared/SocialLogin';
+// import SocialLogin from '../shared/SocialLogin';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
+
+    const axiosPublic= useAxiosPublic();
     const { createUser } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
@@ -63,8 +67,10 @@ const Register = () => {
                     </form>
 
                     <div>
-                    <div className="divider">OR</div>
-                    <div className="card bg-base-100 rounded-box grid h-20 place-items-center"><SocialLogin></SocialLogin></div>
+                        <div className="divider">OR</div>
+                        <div className="card bg-base-100 rounded-box grid h-20 place-items-center">
+                            <p>Already have an account ? <Link className='text-green-700' to='/signin'> SignIn</Link></p>
+                        </div>
                     </div>
                 </div>
 
