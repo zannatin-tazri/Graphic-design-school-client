@@ -9,6 +9,7 @@ import SignIn from "../pages/signin/SignIn";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../pages/Home/Dashboard";
 import WorkGalleryAdmin from "../pages/Home/WorkGalleryAdmin";
+import AboutusDetails from "../pages/Home/AboutusDetails";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+            },
+            {
+                path: '/aboutdetails',
+                element: <PrivateRoute><AboutusDetails></AboutusDetails></PrivateRoute>
             },
             {
                 path: '/manageadmin',
