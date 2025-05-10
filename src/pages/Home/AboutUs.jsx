@@ -14,7 +14,7 @@ const AboutUs = () => {
     }, []);
 
     return (
-        <div className="pb-48 pt-24 px-5 sm:px-8 relative rounded-lg shadow-lg flex flex-col-reverse md:flex-row bg-green-700">
+        <div id="about" className="pb-48 pt-24 px-5 sm:px-8 relative rounded-lg shadow-lg flex flex-col-reverse md:flex-row bg-green-700">
             <div className="w-full md:w-1/2 flex items-center justify-center">
                 <img
                     src={aboutData?.photo_url || 'https://via.placeholder.com/300'}

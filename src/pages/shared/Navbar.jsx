@@ -4,10 +4,13 @@ import { FaPen } from "react-icons/fa";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import logo from "../../assets/logo.png";
 import { getAuth, updateProfile } from "firebase/auth";
+import { Link as ScrollLink } from 'react-scroll';
+
+
 
 const Navbar = () => {
 
- 
+
 
 
   const { user, signOutUser } = useContext(AuthContext);
@@ -49,7 +52,7 @@ const Navbar = () => {
       const newPhotoURL = data.data.display_url;
 
       await updateProfile(auth.currentUser, { photoURL: newPhotoURL });
-      setPhotoURL(newPhotoURL); 
+      setPhotoURL(newPhotoURL);
     } catch (error) {
       console.error("Error uploading photo:", error);
     }
@@ -61,18 +64,36 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li className="text-base-100 font-semibold text-lg">
-        <NavLink to="/myApplications">About</NavLink>
+        <ScrollLink
+          to="about"
+          smooth={true}
+          duration={500}
+          className="cursor-pointer"
+        >
+          About
+        </ScrollLink>
       </li>
+      <li>
+      <ScrollLink
+        to='program'  
+        smooth={true}
+        duration={500}
+        className="cursor-pointer text-base-100 font-semibold text-lg"
+      >
+        Program
+      </ScrollLink>
+      </li>
+
       <li className="text-base-100 font-semibold text-lg">
         <NavLink to="/dashboard">Dashboard</NavLink>
       </li>
-      
+
     </>
   );
 
   return (
     <div>
-      <div className="navbar bg-gray-800 shadow-sm">
+      <div className="p-5 navbar h-24 bg-gray-800 shadow-sm">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -91,7 +112,7 @@ const Navbar = () => {
             </ul>
           </div>
           <a className="btn btn-ghost text-3xl text-purple-950 font-semibold">
-            <img className="w-20" src={logo} alt="Logo" />
+            <img className="w-36" src={logo} alt="Logo" />
           </a>
         </div>
 
@@ -124,10 +145,10 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <Link className="btn btn-primary bg-purple-700" to="/register">
+              <Link className="btn border-none  text-white bg-green-700" to="/register">
                 Register
               </Link>
-              <Link className="btn btn-primary bg-purple-700" to="/signin">
+              <Link className="btn border-none text-white bg-green-700" to="/signin">
                 Sign In
               </Link>
             </>

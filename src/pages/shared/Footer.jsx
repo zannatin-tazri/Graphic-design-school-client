@@ -1,15 +1,15 @@
 import React from 'react';
-import logo from '../../assets/icons8-job-application-100.png'
-import logo2 from '../../assets/favicon.png'
+import logo from '../../assets/logo.png'
+
 const Footer = () => {
     return (
-        <footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
+        <footer className="footer sm:footer-horizontal bg-gray-800 text-white p-10">
   <aside>
     <img src={logo} alt="" />
-    <p className='text-purple-950 font-semibold'>
-    Hunt For Hire Ltd.
+    <p className='text-white font-semibold'>
+    Graphic Design School
       <br />
-      Providing reliable jobs since 1992
+      Providing best technique for learning Graphic Design
     </p>
   </aside>
   <nav>
