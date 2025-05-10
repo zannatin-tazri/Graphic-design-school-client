@@ -3,6 +3,7 @@ import Banner from './Banner';
 import StudyGraphicDesign from './StudyGraphicDesign';
 import WorkGallery from './WorkGallery';
 import AboutUs from './AboutUs';
+import OnlineEducation from './OnlineEducation';
 
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
            <AboutUs></AboutUs>
            <WorkGallery></WorkGallery>
            <StudyGraphicDesign></StudyGraphicDesign>
+           <OnlineEducation></OnlineEducation>
         </div>
     );
 };

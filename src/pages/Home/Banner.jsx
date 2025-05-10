@@ -22,10 +22,10 @@ const Banner = () => {
       
       <div className="relative z-10 max-w-md w-full text-center p-4">
         <h1 className="font-serif text-xl sm:text-5xl font-bold text-gray-600">Graphic Design School</h1>
-        <p className="font-sans mt-4 text-sm sm:text-lg text-gray-600">
+        <p className="font-sans mt-4 font-semibold text-xl sm:text-2xl text-gray-600">
           Study online and continue learning from home
         </p>
-        <p className="mt-2 text-xs sm:text-sm text-gray-500">
+        <p className="mt-2 text-lg sm:text-xl text-gray-500">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
         </p>
         <Link to='/register'>

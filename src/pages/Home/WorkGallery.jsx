@@ -40,7 +40,7 @@ const WorkGallery = () => {
 
     return (
         <div>
-            <h1 className='pt-12 my-10 font-serif text-center text-5xl font-bold text-gray-600'>
+            <h1 className='pt-12 my-10 font-serif text-center text-6xl font-bold text-gray-600'>
                 Work Gallery
             </h1>
 
