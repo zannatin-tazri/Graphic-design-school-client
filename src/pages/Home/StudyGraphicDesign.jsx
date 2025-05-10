@@ -4,21 +4,21 @@ import img2 from '../../assets/05.PNG';
 
 const StudyGraphicDesign = () => {
   return (
-    <div className="relative flex flex-col items-center justify-center w-full p-6 bg-green-700 shadow-2xl opacity-75">
+    <div className="relative flex flex-col items-center justify-center w-full p-6 bg-green-700 shadow-2xl rounded-md">
      
       <img
-        className="absolute top-0 left-0 w-5/6 sm:w-3/5 h-auto object-cover"
+        className="absolute top-0 left-0 w-5/6 sm:w-5/6 h-auto object-cover"
         src={img2}
         alt="Decorative left image"
       />
       <img
-        className="absolute bottom-0 right-0 w-5/6 sm:w-3/5 h-auto object-cover"
+        className="absolute bottom-0 right-0 w-5/6 sm:w-5/6 h-auto object-cover"
         src={img1}
         alt="Decorative right image"
       />
 
       
-      <div className="relative z-10 max-w-lg w-full text-center py-10 mb-16 sm:mb-28 mt-16 sm:mt-28">
+      <div className="relative z-10 max-w-lg w-full text-center py-24 mb-16 sm:mb-28 mt-16 sm:mt-28">
         <h2 className="text-2xl font-serif sm:text-6xl font-bold text-white">
           Where to Study Graphic Design?
         </h2>

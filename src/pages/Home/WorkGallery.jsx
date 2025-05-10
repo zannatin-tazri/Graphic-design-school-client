@@ -46,7 +46,7 @@ const WorkGallery = () => {
 
             {isAdmin && (
                 <div className="text-center mb-6">
-                   <Link to='/manageadmin'><button onClick={handleManageGallery} className="btn btn-outline btn-warning">
+                   <Link to='/manageadmin'><button onClick={handleManageGallery} className="btn bg-gray-800 text-white">
                         Manage Gallery
                     </button></Link> 
                 </div>
@@ -65,7 +65,7 @@ const WorkGallery = () => {
                     <div className="flex justify-center my-12">
                         <button
                             onClick={handleSeeMore}
-                            className="bg-gray-700 btn btn-primary"
+                            className="bg-gray-800 btn text-white"
                         >
                             {showAll ? 'Show Less' : 'See More'}
                         </button>

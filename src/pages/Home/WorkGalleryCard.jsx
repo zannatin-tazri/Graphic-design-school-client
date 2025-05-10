@@ -7,7 +7,7 @@ const WorkGalleryCard = ({gallery}) => {
   <figure>
     <img
       src={image_url}
-      alt="Shoes" />
+      alt="" />
   </figure>
   <div className="card-body text-center">
     <h2 className="text-center text-2xl font-bold text-gray-600">

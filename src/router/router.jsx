@@ -25,7 +25,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
             },
             {
-                path: '//manageadmin',
+                path: '/manageadmin',
                 element: <PrivateRoute><WorkGalleryAdmin></WorkGalleryAdmin></PrivateRoute>
             },
             
