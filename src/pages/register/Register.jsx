@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const Register = () => {
 
-    const axiosPublic= useAxiosPublic();
+    const axiosPublic = useAxiosPublic();
     const { createUser } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
@@ -17,11 +17,13 @@ const Register = () => {
         const form = e.target;
         const email = form.email.value.trim();
         const password = form.password.value.trim();
+        const confirmPassword = form.confirmPassword.value.trim();
 
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/;
 
-        if (!email || !password) {
-            setError("Email and password fields cannot be empty.");
+        // Validation
+        if (!email || !password || !confirmPassword) {
+            setError("All fields are required.");
             setSuccess('');
             return;
         }
@@ -32,24 +34,31 @@ const Register = () => {
             return;
         }
 
+        if (password !== confirmPassword) {
+            setError("Passwords do not match.");
+            setSuccess('');
+            return;
+        }
+
         setError('');
         setSuccess('');
+
         createUser(email, password)
             .then(result => {
                 setSuccess("Account created successfully!");
                 form.reset();
                 console.log(result.user);
 
-                const userInfo={
-                  email: email
-                }
+                const userInfo = {
+                    email: email
+                };
 
-                axiosPublic.post('/users',userInfo)
-                .then(res=>{
-                    if(res.data.insertedID){
-                        console.log("user added to db")
-                    }
-                })
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        if (res.data.insertedID) {
+                            console.log("user added to db");
+                        }
+                    });
 
             })
             .catch(error => {
@@ -61,20 +70,25 @@ const Register = () => {
 
     return (
         <div className="hero bg-base-200 min-h-screen">
-<div className="hero-content flex flex-col-reverse md:flex-row justify-center items-center gap-10">
+            <div className="hero-content flex flex-col-reverse md:flex-row justify-center items-center gap-10">
 
-               
                 <div className="card bg-base-100 w-full max-w-sm shadow-2xl">
-                    <h1 className="pr-5 ml-8 mt-4 text-4xl md:text-5xl font-bold">Register now!</h1>
+                    <h1 className="pr-5 ml-8 mt-4 text-4xl md:text-5xl font-bold">Sign Up Now!</h1>
                     <form onSubmit={handleRegister} className="card-body">
                         <fieldset className="fieldset">
                             <label className="label">Email</label>
                             <input type="email" name='email' className="input" placeholder="Email" required />
+
                             <label className="label">Password</label>
                             <input type="password" name='password' className="input" placeholder="Password" required />
+
+                            <label className="label">Confirm Password</label>
+                            <input type="password" name='confirmPassword' className="input" placeholder="Confirm Password" required />
+
                             {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
                             {success && <p className="text-green-500 text-sm mt-2">{success}</p>}
-                            <button className="btn btn-neutral mt-4">Register</button>
+
+                            <button className="btn btn-neutral mt-4">Sign Up</button>
                         </fieldset>
                     </form>
 
@@ -86,7 +100,6 @@ const Register = () => {
                     </div>
                 </div>
 
-                
                 <div className="flex justify-center">
                     <lottie-player
                         autoplay

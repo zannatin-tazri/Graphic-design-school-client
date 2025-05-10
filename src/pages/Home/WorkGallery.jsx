@@ -33,7 +33,7 @@ const WorkGallery = () => {
     };
 
     const handleManageGallery = () => {
-        navigate('/workgallery-admin'); // Make sure this route exists in your router
+        navigate('/workgallery-admin'); 
     };
 
     const visibleGallery = showAll && user ? workgallery : workgallery.slice(0, 6);

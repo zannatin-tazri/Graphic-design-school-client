@@ -1,61 +1,18 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { FaPen } from "react-icons/fa";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import logo from "../../assets/logo.png";
-import { getAuth, updateProfile } from "firebase/auth";
-import { Link as ScrollLink } from 'react-scroll';
-
-
+import { Link as ScrollLink } from "react-scroll";
 
 const Navbar = () => {
-
-
-
-
   const { user, signOutUser } = useContext(AuthContext);
-  const [photoURL, setPhotoURL] = useState(user?.photoURL);
-  const fileInputRef = useRef(null);
-  const auth = getAuth();
+  // const auth = getAuth();
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   const handleSignout = () => {
     signOutUser()
-      .then(() => {
-        console.log("Signed out");
-      })
-      .catch((error) => {
-        console.error("Signout error:", error);
-      });
-  };
-
-  const handlePhotoClick = () => {
-    fileInputRef.current.click();
-  };
-
-  const handlePhotoUpload = async (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    const formData = new FormData();
-    formData.append("image", file);
-
-    try {
-      const res = await fetch(
-        `https://api.imgbb.com/1/upload?key=YOUR_IMGBB_API_KEY`,
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-
-      const data = await res.json();
-      const newPhotoURL = data.data.display_url;
-
-      await updateProfile(auth.currentUser, { photoURL: newPhotoURL });
-      setPhotoURL(newPhotoURL);
-    } catch (error) {
-      console.error("Error uploading photo:", error);
-    }
+      .then(() => console.log("Signed out"))
+      .catch((error) => console.error("Signout error:", error));
   };
 
   const links = (
@@ -64,39 +21,36 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li className="text-base-100 font-semibold text-lg">
-        <ScrollLink
-          to="about"
-          smooth={true}
-          duration={500}
-          className="cursor-pointer"
-        >
+        <ScrollLink to="about" smooth={true} duration={500} className="cursor-pointer">
           About
         </ScrollLink>
       </li>
-      <li>
-      <ScrollLink
-        to='program'  
-        smooth={true}
-        duration={500}
-        className="cursor-pointer text-base-100 font-semibold text-lg"
-      >
-        Program
-      </ScrollLink>
+      <li className="text-base-100 font-semibold text-lg">
+        <ScrollLink to="program" smooth={true} duration={500} className="cursor-pointer">
+          Program
+        </ScrollLink>
       </li>
-
+      <li className="text-base-100 font-semibold text-lg">
+        <ScrollLink to="contact" smooth={true} duration={500} className="cursor-pointer">
+          Contact
+        </ScrollLink>
+      </li>
       <li className="text-base-100 font-semibold text-lg">
         <NavLink to="/dashboard">Dashboard</NavLink>
       </li>
-
     </>
   );
 
   return (
     <div>
       <div className="p-5 navbar h-24 bg-gray-800 shadow-sm">
+        {/* Start */}
         <div className="navbar-start">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div className="dropdown lg:hidden">
+            <button
+              onClick={() => setShowMobileMenu(!showMobileMenu)}
+              className="btn bg-white btn-ghost"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -106,47 +60,60 @@ const Navbar = () => {
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
               </svg>
-            </div>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-              {links}
-            </ul>
+            </button>
+
+            {showMobileMenu && (
+              <ul className="menu menu-sm dropdown-content bg-gray-700 rounded-box z-10 mt-3 w-52 p-2 shadow">
+                {links}
+                <div className="mt-3">
+                  {user ? (
+                    <button
+                      onClick={handleSignout}
+                      className="btn btn-sm w-full bg-white text-gray-800"
+                    >
+                      Sign Out
+                    </button>
+                  ) : (
+                    <>
+                      <li className="mt-2">
+                        <Link to="/register" className="btn btn-sm w-full bg-green-700 text-white">
+                          Sign Up
+                        </Link>
+                      </li>
+                      <li className="mt-2">
+                        <Link to="/signin" className="btn btn-sm w-full bg-green-700 text-white">
+                          Sign In
+                        </Link>
+                      </li>
+                    </>
+                  )}
+                </div>
+              </ul>
+            )}
           </div>
           <a className="btn btn-ghost text-3xl text-purple-950 font-semibold">
             <img className="w-36" src={logo} alt="Logo" />
           </a>
         </div>
 
+        {/* Center */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
 
-        <div className="navbar-end gap-3">
+        {/* End */}
+        <div className="navbar-end gap-3 hidden lg:flex">
           {user ? (
             <>
-              <div className="relative">
-                <img
-                  src={photoURL || "https://i.ibb.co/yYVjY2L/user.png"}
-                  alt="Profile"
-                  className="w-10 h-10 rounded-full cursor-pointer border border-white"
-                  onClick={handlePhotoClick}
-                />
-                <FaPen className="absolute bottom-0 right-0 text-white bg-black p-1 rounded-full w-4 h-4" />
-                <input
-                  type="file"
-                  ref={fileInputRef}
-                  className="hidden"
-                  accept="image/*"
-                  onChange={handlePhotoUpload}
-                />
-              </div>
+              
               <button onClick={handleSignout} className="btn">
                 Sign Out
               </button>
             </>
           ) : (
             <>
-              <Link className="btn border-none  text-white bg-green-700" to="/register">
-                Register
+              <Link className="btn border-none text-white bg-green-700" to="/register">
+                Sign Up
               </Link>
               <Link className="btn border-none text-white bg-green-700" to="/signin">
                 Sign In

@@ -4,7 +4,7 @@ import phoneimg from '../../assets/06.PNG';
 
 const OnlineEducation = () => {
   return (
-    <div className="bg-gray-800 text-white px-6 py-16 md:px-16 md:py-32">
+    <div id="contact" className="bg-gray-800 text-white rounded-xl px-6 py-16 md:px-16 md:py-32">
       <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-center mb-10">
         Online Education
       </h1>
