@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
 import AuthContext from '../../context/AuthContext/AuthContext';
-// import { AuthContext } from '../../providers/AuthProvider';
 
 const AboutusDetails = () => {
   const { user } = useContext(AuthContext);
