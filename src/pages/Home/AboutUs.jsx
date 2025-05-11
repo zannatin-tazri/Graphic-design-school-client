@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import AuthContext from '../../context/AuthContext/AuthContext';
-import decorativeimg from '../../assets/03.PNG';
+import decorativeimg from '../../assets/03.png';
 import { Link } from 'react-router-dom';
 
 const AboutUs = () => {
