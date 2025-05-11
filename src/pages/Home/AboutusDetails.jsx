@@ -15,7 +15,7 @@ const AboutusDetails = () => {
       .then(res => res.json())
       .then(data => {
         setAboutData(data);
-        if (data.length > 0) setNewDescription(data[0].description); // initialize
+        if (data.length > 0) setNewDescription(data[0].description); 
       });
 
     // Check admin

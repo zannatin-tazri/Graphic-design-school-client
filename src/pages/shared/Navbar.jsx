@@ -20,6 +20,10 @@ const Navbar = () => {
       <li className="text-base-100 font-semibold text-lg">
         <NavLink to="/">Home</NavLink>
       </li>
+      
+      {user && <li className="text-base-100 font-semibold text-lg">
+        <NavLink to="/profile">Profile</NavLink>
+      </li>}
       <li className="text-base-100 font-semibold text-lg">
         <ScrollLink to="about" smooth={true} duration={500} className="cursor-pointer">
           About

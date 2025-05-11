@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../pages/Home/Dashboard";
 import WorkGalleryAdmin from "../pages/Home/WorkGalleryAdmin";
 import AboutusDetails from "../pages/Home/AboutusDetails";
+import Profile from "../pages/Home/Profile";
 
 const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+            },
+            {
+                path: '/profile',
+                element: <PrivateRoute><Profile></Profile></PrivateRoute>
             },
            
             {
