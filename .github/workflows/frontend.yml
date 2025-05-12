@@ -24,7 +24,7 @@ jobs:
     - name: Build and push frontend Docker image
       uses: docker/build-push-action@v5
       with:
-        context: ./graphic/Graphic-design-school-client
-        file: ./graphic/Graphic-design-school-client/Dockerfile
+        context: ./
+        file: ./Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/graphic-frontend:latest
