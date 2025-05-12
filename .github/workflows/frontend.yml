@@ -1,11 +1,11 @@
-name: Build and Push Frontend
+name: Build, Push and Deploy Frontend
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,3 +28,15 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/graphic-frontend:latest
+
+    - name: Deploy to Remote Server via SSH
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        key: ${{ secrets.REMOTE_SSH_KEY }}
+        script: |
+          docker pull ${{ secrets.DOCKER_USERNAME }}/graphic-frontend:latest
+          docker stop graphic-frontend || true
+          docker rm graphic-frontend || true
+          docker run -d --name graphic-frontend -p 5173:5173 ${{ secrets.DOCKER_USERNAME }}/graphic-frontend:latest
