@@ -54,6 +54,18 @@ VITE_appId=1:913159203468:web:73a524d55e6aa76c03a9a9
 
 PORT : 5173
 
+## CI/CD pipeline yml file
+https://github.com/zannatin-tazri/Graphic-design-school-client/blob/main/.github/workflows/frontend.yml
+
+The frontend.yml file is configured to automate the CI/CD pipeline for the frontend service. On every push to the main branch, it performs the following tasks:  
+
+Builds the Docker image of the frontend application using the provided Dockerfile.  
+
+Pushes the image to Docker Hub for containerized delivery.  
+
+Deploys the latest image to a remote server via SSH by pulling, stopping any existing container, and running the new one on port 5173.  
+
+
 
 
 
