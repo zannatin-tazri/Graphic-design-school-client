@@ -83,15 +83,16 @@ Deploys the latest image to a remote server via SSH by pulling, stopping any exi
 
 The navigation bar includes:
 - **Home**
-- 👤 **Profile** – Visible only to signed-in users.
+-  **Profile** – Visible only to signed-in users.
   - Users can update their information:
     - Name
     - Phone Number
-- 📄 **About Us**
-- 📄 **Program**
-- 📄 **Contact**
-- 🖥️ **Dashboard** – Accessible only to signed-in users.
-                    -admin control can be given
+-  **About Us**
+-  **Program**
+-  **Contact**
+-  **Dashboard** – **Create admin here by clicking "Make admin" button. After that admin can control "About Us" and "Work Gallery".**.
+- 
+                    - 
   
 
 
@@ -102,7 +103,7 @@ The navigation bar includes:
 Users granted admin privileges have additional access to manage specific parts of the website:
 
 ### 1. Work Gallery
-- Admin can sees an extra button: **Manage Work Gallery** at the bottom of the title "Work gallery"
+- Admin can sees an extra button: **Manage Gallery** at the bottom of the title "Work gallery"
 - Features on the Manage Page:
   -  Add new gallery items (Photo, Title, Subtitle)
     - Delete existing gallery items
