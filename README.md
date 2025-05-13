@@ -1,4 +1,4 @@
-# 🎨 Graphic Design School Web Application
+# Graphic Design School Web Application
 
 The **Graphic Design School** is a responsive web application designed to manage and showcase the creative content of a design school. It features role-based access for regular users and admins, allowing for dynamic content control and interaction.
 
@@ -69,7 +69,7 @@ Deploys the latest image to a remote server via SSH by pulling, stopping any exi
 ## About Website
 
 
-## 🔐 Authentication and Access Control
+## Authentication and Access Control
 
 - **Firebase Authentication** is used for secure sign in and sign up.
 - Users **must be signed in** to:
@@ -79,7 +79,7 @@ Deploys the latest image to a remote server via SSH by pulling, stopping any exi
 
 ---
 
-## 🧭 Navigation Bar
+## Navigation Bar
 
 The navigation bar includes:
 - **Home**
@@ -97,31 +97,31 @@ The navigation bar includes:
 
 ---
 
-## 🧑‍💼 Admin Features
+## Admin Features
 
 Users granted admin privileges have additional access to manage specific parts of the website:
 
 ### 1. Work Gallery
 - Admin can sees an extra button: **Manage Work Gallery** at the bottom of the title "Work gallery"
 - Features on the Manage Page:
-  - ➕ Add new gallery items (Photo, Title, Subtitle)
-  - ❌ Delete existing gallery items
+  -  Add new gallery items (Photo, Title, Subtitle)
+    - Delete existing gallery items
 
 ### 2. About Us
 - Admin sees a **Read More** button
 - Features on the Manage Page:
-  - 🖼️ Change the photo
-  - 📝 Edit the "About Us" content
+  - Change the photo
+  - Edit the "About Us" content
 
 ---
 
-## 📱 Responsive Design
+## Responsive Design
 
 - The website is fully responsive and works seamlessly across all mobile and tablet devices.
 
 ---
 
-## 🚫 Guest Limitations
+## Guest Limitations
 
 - Guests (not signed in) **cannot**:
   - View full website content
@@ -129,7 +129,7 @@ Users granted admin privileges have additional access to manage specific parts o
 
 ---
 
-## 🔧 Tech Stack
+## Tech Stack
 
 - **Frontend**: React.js, Tailwind CSS, DaisyUI
 - **Authentication**: Firebase Auth
